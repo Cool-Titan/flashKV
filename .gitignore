@@ -1,0 +1,13 @@
+build/
+build-*/
+*.o
+*.a
+compile_commands.json
+CMakeCache.txt
+CMakeFiles/
+__pycache__/
+*.pyc
+core
+*.core
+FlashKV_Codebase_Analysis.pdf
+FLASHKV_MASTER_IMPLEMENTATION_PROMPT.md
