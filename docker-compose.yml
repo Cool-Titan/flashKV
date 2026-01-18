@@ -1,0 +1,17 @@
+services:
+  flashkv:
+    build: .
+    image: flashkv:latest
+    container_name: flashkv_server
+    ports:
+      - "6379:6379"
+    environment:
+      - FLASHKV_DEBUG=0
+    restart: unless-stopped
+    healthcheck:
+      # A PING over the wire is the cheapest proof the server is really serving.
+      test: ["CMD-SHELL", "printf '{\"cmd\":\"PING\"}' | timeout 2 bash -c 'cat > /dev/tcp/127.0.0.1/6379'"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
